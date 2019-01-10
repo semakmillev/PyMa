@@ -18,8 +18,11 @@ def decorator(argument):
 
 @decorator(10)
 def test(v):
+
     print(v)
 
 test(5)
+
+
 
 

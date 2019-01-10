@@ -30,7 +30,7 @@ class A(B):
     def __init__(self, c=None):
         self.a = None
         self._b = None
-        self.c = c
+        self.c = 7
         self.t = T()
 
 
@@ -43,8 +43,15 @@ class A(B):
     b = property(b, set_b)
 
 
-a = A()
-print(a.attr.temp)
+class NewList(B, list):
+    pass
+
+a = NewList()
+a.append(10)
+print (a, isinstance(a, B))
+# print(a.attr.temp)
+
+
 
 # print(type(a))
 # a2 = type(a)(9)
@@ -53,8 +60,8 @@ print(a.attr.temp)
 # print(isinstance(a, B))
 
 
-def isprop(v):
-    return isinstance(v, property)
+#def isprop(v):
+#    return isinstance(v, property)
 
 
 '''
@@ -63,9 +70,9 @@ for i in a.__dict__:
         print(a.__dict__[i].f)
     print(i)
 '''
-propnames = [(name, value) for (name, value) in inspect.getmembers(A, isprop)]
+#propnames = [(name, value) for (name, value) in inspect.getmembers(A, isprop)]
 # a.__[propnames[0]] = 10
 # a.__getitem__[propnames[0]] = 10
-print(propnames[0])
+#print(propnames[0])
 
-print()
+#print()
